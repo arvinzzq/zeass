@@ -1,0 +1,37 @@
+{
+  "name": "geass",
+  "version": "0.0.1",
+  "description": "A node full-stack framework based on koa2.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "babel src -d lib --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zz1211/Geass.git"
+  },
+  "keywords": [
+    "node",
+    "full-stack",
+    "framework"
+  ],
+  "author": "zhongzhiqiang <zqzhong1211@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zz1211/Geass/issues"
+  },
+  "homepage": "https://github.com/zz1211/Geass#readme",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "koa": "^2.5.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0"
+  }
+}

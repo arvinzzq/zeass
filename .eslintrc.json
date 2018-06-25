@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb",
+    "rules": {
+        "jsx-a11y/no-static-element-interactions": "off",
+        "react/no-multi-comp": "warn",
+        "comma-dangle": "off",
+        "no-console": "off",
+        "no-param-reassign": "off",
+        "arrow-parens": "off"
+    },
+    "plugins": [
+        "import"
+    ]
+}
