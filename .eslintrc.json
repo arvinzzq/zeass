@@ -6,7 +6,10 @@
         "comma-dangle": "off",
         "no-console": "off",
         "no-param-reassign": "off",
-        "arrow-parens": "off"
+        "arrow-parens": "off",
+        "import/no-dynamic-require": "off",
+        "global-require": "off",
+        "object-curly-newline": "off"
     },
     "plugins": [
         "import"

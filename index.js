@@ -1,9 +1,12 @@
-import base from './lib/base';
+import Controller from './lib/base/controller';
+import Service from './lib/base/service';
 import helper from './lib/helper';
 import middleware from './lib/middleware';
 
 export default {
-  base,
+  Controller,
+  Service,
   helper,
   middleware
 };
+
