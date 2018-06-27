@@ -1,6 +1,6 @@
 {
   "name": "zeass",
-  "version": "0.0.3",
+  "version": "0.0.1",
   "description": "A node full-stack framework based on koa2.",
   "main": "lib/zeass.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zz1211/Geass.git"
+    "url": "git+https://github.com/zz1211/Zeass.git"
   },
   "keywords": [
     "node",
@@ -18,9 +18,9 @@
   "author": "zhongzhiqiang <zqzhong1211@163.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zz1211/Geass/issues"
+    "url": "https://github.com/zz1211/Zeass/issues"
   },
-  "homepage": "https://github.com/zz1211/Geass#readme",
+  "homepage": "https://github.com/zz1211/Zeass#readme",
   "dependencies": {
     "bunyan": "^1.8.12",
     "koa": "^2.5.1",
