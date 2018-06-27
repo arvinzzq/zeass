@@ -1,8 +1,8 @@
 {
-  "name": "geass",
-  "version": "0.0.1",
+  "name": "zeass",
+  "version": "0.0.3",
   "description": "A node full-stack framework based on koa2.",
-  "main": "index.js",
+  "main": "lib/zeass.js",
   "scripts": {
     "dev": "babel src -d lib --watch"
   },
