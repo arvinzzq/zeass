@@ -1,6 +1,6 @@
 {
   "name": "zeass",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A node full-stack framework based on koa2.",
   "main": "lib/zeass.js",
   "scripts": {
