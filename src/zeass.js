@@ -3,7 +3,7 @@ import Service from './base/service';
 import helper from './helper';
 import middleware from './middleware';
 
-export default {
+export {
   Controller,
   Service,
   helper,
