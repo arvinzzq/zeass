@@ -1,6 +1,6 @@
-import fs from 'fs';
 import path from 'path';
 import nunjucks from 'nunjucks';
+
 const viewPath = path.resolve(process.cwd(), 'server/view');
 
 /**
@@ -15,11 +15,16 @@ function createEnv(options) {
     throwOnUndefined = false,
     filters
   } = options;
-  const env = new nunjucks.Environment(new nunjucks.FileSystemLoader(viewPath), options);
+
+  const env = new nunjucks.Environment(
+    new nunjucks.FileSystemLoader(viewPath, { noCache, watch }),
+    { autoescape, throwOnUndefined },
+  );
+
   // Add template filter to env.
   Object.keys(filters).forEach(name => {
     env.addFilter(name, filters[name]);
-  })
+  });
   return env;
 }
 
@@ -36,18 +41,18 @@ const renderMiddleware = options => {
 
   Object.keys(global).forEach(name => {
     env.addGlobal(name, global[name]);
-  })
+  });
 
-  return async(ctx, next) => {
+  return async (ctx, next) => {
     ctx.render = (view, data, callback) => {
       ctx.response.body = env.render(`${view}${ext}`, {
         ...ctx.state,
         ...data
       }, callback);
       ctx.response.type = 'text/html';
-    }
-  await next();
-  }
-}
+    };
+    await next();
+  };
+};
 
 export default renderMiddleware;
