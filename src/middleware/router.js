@@ -11,6 +11,13 @@ const routerConfigPrefix = '# This file is automatic generated when server is st
 const noop = () => {};
 const routerConfig = [];
 
+/**
+ * Add router config to routerConfig object.
+ * @param {String} method 
+ * @param {String} url 
+ * @param {String} ctrlName 
+ * @param {String} fnName 
+ */
 function addRouterConfig(method, url, ctrlName, fnName) {
   routerConfig.push({
     method,
@@ -20,6 +27,12 @@ function addRouterConfig(method, url, ctrlName, fnName) {
   });
 }
 
+/**
+ * Return router config object include parsed 
+ * method, url, controller method nameand controller method
+ * @param {String} key 
+ * @param {String} val 
+ */
 function parseRouterConfig(key, val) {
   const [method, url] = key.split(' ');
   const [ctrlName, name] = val.split('.');
