@@ -4,7 +4,7 @@ A node full-stack framework based on koa2.
 ## TODO
 
 * [x] 路由收集
-* [ ] 模板渲染
+* [x] 模板渲染
 * [ ] 支持ORM方式接入数据库
 * [ ] 权限校验
 * [ ] 用户态管理
