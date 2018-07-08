@@ -44,6 +44,14 @@ function parseRouterConfig(key, val) {
   };
 }
 
+// Add router according to default router file.
+Object.keys(routerDefaultConfig).forEach(key => {
+  const { method, url, Controller, name } = parseRouterConfig(key, routerDefaultConfig[key]);
+  const controller = new Controller();
+  addRouterConfig(method, url, controller.constructor.name, name);
+  router[method](url, controller[name]);
+});
+
 const controllers = fs.readdirSync(controllerPath)
   .map(file => require(path.resolve(controllerPath, file)).default);
 
@@ -55,13 +63,6 @@ controllers.forEach(Controller => {
     addRouterConfig(method, url, controller.constructor.name, name);
     router[method](url, ...middleware, controller[name]);
   });
-});
-
-Object.keys(routerDefaultConfig).forEach(key => {
-  const { method, url, Controller, name } = parseRouterConfig(key, routerDefaultConfig[key]);
-  const controller = new Controller();
-  addRouterConfig(method, url, controller.constructor.name, name);
-  router[method](url, controller[name]);
 });
 
 routerConfig.sort((a, b) => a.ctrlName.localeCompare(b.ctrlName));
