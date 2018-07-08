@@ -44,7 +44,7 @@ function parseRouterConfig(key, val) {
   };
 }
 
-// Add router according to default router file.
+// Add routes according to default routes file.
 Object.keys(routerDefaultConfig).forEach(key => {
   const { method, url, Controller, name } = parseRouterConfig(key, routerDefaultConfig[key]);
   const controller = new Controller();
