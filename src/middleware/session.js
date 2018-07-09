@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import redisStore from 'koa-redis';
-import convert from 'koa-convert';
 import session from 'koa-generic-session';
 const cwd = process.cwd();
 const pkgConfig = require(path.resolve(cwd, './package.json'))
@@ -27,11 +26,11 @@ const sessionMiddleware = function(type) {
   if (typeof type !== 'string' && typeof type !== 'object' && typeof type !== 'undefined') {
     throw new Error('Type parameter must be either string or object, when it is passed');
   }
-  return convert(session({
+  return session({
     ...sessionConfig,
     store: typeof type === 'string' ? mapStore[type] : type,
     prefix: `${pkgConfig.name}:sess`
-  }));
+  });
 }
 
 export default sessionMiddleware;
