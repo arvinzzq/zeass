@@ -7,7 +7,7 @@ A node full-stack framework based on koa2.
 * [x] 模板渲染
 * [x] 用户态管理
 * [x] 权限校验
-* [ ] 支持ORM方式接入数据库
+* [x] 支持ORM方式接入数据库
 * [ ] 基础性安全防御
 * [ ] 日志记录分析
 * [ ] 接入teehee，支持命令行操作
@@ -15,3 +15,15 @@ A node full-stack framework based on koa2.
 * [ ] 自动生成项目信息文档
 
 ## Development
+
+```
+teehee init web-project
+```
+
+choose project type of web
+
+then:
+
+```
+npm run dev & npm link Zeass
+```
