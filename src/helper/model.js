@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import bunyan from 'bunyan';
 import Sequelize from 'sequelize';
-const Op = Sequelize.Op;
 
+const { Op } = Sequelize;
 const Logger = bunyan.createLogger({
   name: 'MySQL',
   level: 'debug'
