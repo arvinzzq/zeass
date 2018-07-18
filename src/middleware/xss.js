@@ -48,13 +48,16 @@ function generateOptions(options) {
 }
 
 function xssMiddleware(options = {}) {
+  const { whiteUrls = [] } = options;
   const xssInstance = new xss.FilterXSS(generateOptions(options));
   return async (ctx, next) => {
-    const { query, request } = ctx;
-    const { body } = request;
-    const escaper = xssInstance.process.bind(xssInstance);
-    ctx.query = paramEscape(query, escaper);
-    ctx.request.body = paramEscape(body, escaper);
+    if (whiteUrls.indexOf(ctx.url) === -1) {
+      const { query, request } = ctx;
+      const { body } = request;
+      const escaper = xssInstance.process.bind(xssInstance);
+      ctx.query = paramEscape(query, escaper);
+      ctx.request.body = paramEscape(body, escaper);
+    }
     await next();
   };
 }
