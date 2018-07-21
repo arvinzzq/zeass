@@ -8,7 +8,6 @@ function authorize(target, key, descriptor) {
       ctx.redirect(`/login?redirect=${ctx.request.href}`);
     }
   }
-
   return descriptor;
 }
 

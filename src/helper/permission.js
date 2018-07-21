@@ -4,9 +4,9 @@ const noop = () => {};
  * Create decoractor used for permission
  * @param {Function} checker method check wether has permission
  * @param {Function} successCallback callback when visitor has permission
- * @param {Function} failedCallback callback when visitor has no permission
+ * @param {Function} failCallback callback when visitor has no permission
  */
-const needSomethingAsync = (checker, successCallback = noop, failedCallback = noop) => {
+const needSomethingAsync = (checker, successCallback = noop, failCallback = noop) => {
   return function(target, name, descriptor) {
     const oldValue = descriptor.value;
     descriptor.value = async function(...args) {
@@ -15,13 +15,13 @@ const needSomethingAsync = (checker, successCallback = noop, failedCallback = no
         successCallback();
         return oldValue.apply(this, args);
       } else {
-        failedCallback();
+        failCallback();
       }
     }
   }
 };
 
-const needSomething = (checker, successCallback = noop, failedCallback = noop) => {
+const needSomething = (checker, successCallback = noop, failCallback = noop) => {
   return function(target, name, descriptor) {
     const oldValue = descriptor.value;
     descriptor.value = function(...args) {
@@ -29,7 +29,7 @@ const needSomething = (checker, successCallback = noop, failedCallback = noop) =
         successCallback();
         return oldValue.apply(this, args);
       } else {
-        failedCallback();
+        failCallback();
       }
     }
   }
@@ -74,21 +74,21 @@ const needAnyPermission = createValidationMethod('some');
  // Async version permission
 @autobind
 class PermissionAsync {
-  constructor(fnFetch, successCallback, failedCallback) {
+  constructor(fnFetch, successCallback, failCallback) {
     this.fnFetch = fnFetch;
     this.successCallback = successCallback;
-    this.failedCallback = failedCallback;
+    this.failCallback = failCallback;
   }
   // decoractor version method of needEveryPermission
   everyPermissionAsync(...list) {
     const checker = () => needEveryPermissionAsync(this.fnFetch)(...list);
-    return needSomethingAsync(checker, this.successCallback, this.failedCallback);
+    return needSomethingAsync(checker, this.successCallback, this.failCallback);
   }
 
   // decoractor version method of needAnyPermission
   anyPermissionAsync(...list) {
     const checker = () => needAnyPermissionAsync(this.fnFetch)(...list);
-    return needSomethingAsync(checker, this.successCallback, this.failedCallback);
+    return needSomethingAsync(checker, this.successCallback, this.failCallback);
   }
 
   get needEveryPermissionAsync() {
@@ -103,21 +103,21 @@ class PermissionAsync {
 // Sync version permission
 @autobind
 class Permission {
-  constructor(fnFetch, successCallback, failedCallback) {
+  constructor(fnFetch, successCallback, failCallback) {
     this.fnFetch = fnFetch;
     this.successCallback = successCallback;
-    this.failedCallback = failedCallback;
+    this.failCallback = failCallback;
   }
   // decoractor version method of needEveryPermission
   everyPermission(...list) {
     const checker = () => needEveryPermission(this.fnFetch)(...list);
-    return needSomething(checker, this.successCallback, this.failedCallback);
+    return needSomething(checker, this.successCallback, this.failCallback);
   }
 
   // decoractor version method of needAnyPermission
   anyPermission(...list) {
     const checker = () => needAnyPermission(this.fnFetch)(...list);
-    return needSomething(checker, this.successCallback, this.failedCallback);
+    return needSomething(checker, this.successCallback, this.failCallback);
   }
 
   get needEveryPermission() {
@@ -132,4 +132,4 @@ class Permission {
 export {
   Permission,
   PermissionAsync
-};
+}
