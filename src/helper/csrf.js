@@ -9,6 +9,10 @@ const fieldMethodMap = {
   query: (ctx, csrfName) => ctx.query[csrfName]
 };
 
+/**
+ * csrf setter used for csrf and token generation
+ * @param {Object} options
+ */
 function csrfSetter(options) {
   const { csrfName = TOEKN } = options;
   return (target, key, descriptor) => {
@@ -32,6 +36,10 @@ function csrfSetter(options) {
   };
 }
 
+/**
+ * csrf validator used for request csrf token validation
+ * @param {Object} options
+ */
 function csrfValidator(options) {
   const { failCallback = noop, csrfName = TOEKN } = options;
   return (csrfField = 'header') => (target, key, descriptor) => {
