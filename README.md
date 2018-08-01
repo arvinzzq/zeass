@@ -9,8 +9,7 @@ A node full-stack framework based on koa2.
 * [x] 权限校验
 * [x] 支持ORM方式接入数据库
 * [x] 基础性安全防御
-* [ ] 接入teehee，支持命令行操作
-* [ ] 完全使用webpack配置模板进行打包
+* [x] 接入teehee，支持命令行操作
 
 ## Development
 
@@ -23,5 +22,5 @@ choose project type of web
 then:
 
 ```
-npm run dev & npm link Zeass
+npm link Zeass &  npm run dev
 ```

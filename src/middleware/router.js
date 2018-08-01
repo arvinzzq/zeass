@@ -57,7 +57,7 @@ const controllers = fs.readdirSync(controllerPath)
 
 controllers.forEach(Controller => {
   const controller = new Controller();
-  const { $$routes } = controller;
+  const { $$routes = [] } = controller;
   $$routes.forEach(item => {
     const { method, name, url, middleware } = item;
     addRouterConfig(method, url, controller.constructor.name, name);
