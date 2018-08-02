@@ -30,7 +30,7 @@ function generateOptions(options) {
   const combinedWhiteList = {
     ...xss.whiteList,
     ...whiteList
-  }
+  };
   if (enableStyle) {
     Object.keys(combinedWhiteList).forEach(key => combinedWhiteList[key].push('style'));
   }
