@@ -1,9 +1,8 @@
-import path from 'path';
 import koaBody from 'koa-body';
 
 function bodyMiddleware(options) {
   return koaBody({
-    formidable: { uploadDir: path.join('/tmp') },
+    formidable: { uploadDir: '/tmp' },
     multipart: true,
     jsonLimit: '3mb',
     formLimit: '10mb',

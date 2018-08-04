@@ -1,13 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import Router from 'koa-router';
+import { pathConfig } from '../helper/utils';
 
 const router = new Router();
 const cwd = process.cwd();
-const controllerPath = path.resolve(cwd, 'server/controller');
-const routerDefaultConfig = JSON.parse(fs.readFileSync(path.resolve(cwd, 'server/router/default.json')) || {});
-const routerConfigPath = path.resolve(cwd, 'server/router/router.config');
-const routerConfigPrefix = '# This file is automatic generated when server is started.'
+const controllerPath = path.resolve(cwd, pathConfig('server'), 'controller');
+const routerDefaultConfig = JSON.parse(fs.readFileSync(path.resolve(cwd, pathConfig('server'), 'router/default.json')) || {});
+const routerConfigPath = path.resolve(cwd, pathConfig('server'), 'router/router.config');
+const routerConfigPrefix = '# This file is automatic generated when server is started.';
 const noop = () => {};
 const routerConfig = [];
 

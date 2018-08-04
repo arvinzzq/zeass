@@ -1,7 +1,8 @@
 import path from 'path';
 import nunjucks from 'nunjucks';
+import { pathConfig } from '../helper/utils';
 
-const viewPath = path.resolve(process.cwd(), 'server/view');
+const viewPath = path.resolve(process.cwd(), pathConfig('server'), 'view');
 
 /**
  * Create env of Nunjuck for template render

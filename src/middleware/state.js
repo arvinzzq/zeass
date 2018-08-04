@@ -24,9 +24,9 @@ class CtxState {
     }
     return name ? this.state[name] : this.state;
   }
-  
+
   setState(...args) {
-    switch (args.length) { 
+    switch (args.length) {
       case 1:
         if (typeof args[0] === 'object') {
           this.state = args[0];
@@ -41,7 +41,7 @@ class CtxState {
           throwParamsError();
         }
         break;
-      default: 
+      default:
         throwParamsError();
         break;
     }
@@ -51,6 +51,6 @@ class CtxState {
 const stateMiddleware = async function (ctx, next) {
   ctx.globalState = ctx.globalState || new CtxState();
   await next();
-}
+};
 
 export default stateMiddleware;

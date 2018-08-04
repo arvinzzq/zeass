@@ -1,13 +1,12 @@
 function authorize(target, key, descriptor) {
   const oldValue = descriptor.value;
-  descriptor.value = async function(ctx, next) {
+  descriptor.value = async function (ctx, next) {
     const { user } = ctx.session;
     if (user) {
       return oldValue.call(this, ctx, next);
-    } else {
-      ctx.redirect(`/login?redirect=${ctx.request.href}`);
     }
-  }
+    ctx.redirect(`/login?redirect=${ctx.request.href}`);
+  };
   return descriptor;
 }
 

@@ -1,7 +1,9 @@
 import path from 'path';
-const CODE = require(path.resolve(process.cwd(), './server/config/code.json'));
+import { pathConfig } from '../helper/utils';
 
-export default async (ctx, next) =>  {  
+const CODE = require(path.resolve(process.cwd(), pathConfig('server'), 'config/code.json'));
+
+export default async (ctx, next) => {
   ctx.CODE = CODE;
   await next();
 };
