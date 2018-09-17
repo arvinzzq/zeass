@@ -32,7 +32,7 @@ npm run webpack:dev -> frontend side resource compile on dev mode
 
 ![usage demo](./usage_demo.gif)
 
-## File Structure
+## Project Structure
 
 ```javascript
 .
@@ -68,5 +68,5 @@ choose project type of web
 then:
 
 ```
-npm link Zeass &  npm run dev
+npm link Zeass && npm run dev
 ```
